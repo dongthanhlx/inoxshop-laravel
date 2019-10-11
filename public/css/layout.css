@@ -1,0 +1,70 @@
+.container {
+    width: 100%;
+}
+
+/* ONE COLUMN */
+.container.one-column {
+    width: 70%;
+    margin: auto;
+}
+
+
+/* TWO COLUMNS */
+.container.two-columns {
+    width: 80%;
+}
+.container.two-columns #sidebar {
+    width: 320px;
+    float: left;
+}
+
+
+.container.two-columns #primary {
+    margin-left: 320px;
+}
+
+/* THREE COLUMNS */
+.container.three-columns::after {
+    content: "";
+    clear: both;
+}
+
+.container.three-columns #sidebar {
+    width: 200px;
+    float: left;
+}
+
+.container.three-columns #primary {
+    margin-left: 200px;
+    margin-right: 220px;
+    width: auto;
+    overflow: hidden;
+}
+
+.container.three-columns #rss-feed {
+    position: absolute;
+    width: 200px;
+    top: 0;
+    right: 0;
+}
+
+.dropdown-right:hover .dropdown-menu {
+    display: inline-block;
+    margin: -39px 0 0 318px;
+}
+
+.dropdown-bottom:hover .dropdown-menu {
+    display: inline-block;
+}
+/* HEADER */
+
+/* NAV */
+
+/* SIDEBAR */
+
+#sidebar {
+    border: 1px solid darkslategrey;
+}
+
+
+/* PRIMARY */
