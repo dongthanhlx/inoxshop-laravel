@@ -1,7 +1,8 @@
-@include('components.site-header');
+@include('components.site-header')
+@include('components.site-nav')
+@include('components.site-sidebar')
 <?= "<div class='container two-columns'>" ?>
-    @include('components.site-nav');
-    @include('components.site-sidebar');
-    @include('components.site-primary');
+    @include('components.site-primary')
 <?= "</div>" ?>
-@include('components.site-footer');
+@include('components.site-copyright')
+@include('components.site-footer')

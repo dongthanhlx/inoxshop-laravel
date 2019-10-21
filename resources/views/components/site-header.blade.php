@@ -10,7 +10,9 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="{{ asset('js/app.js') }}"></script>
+        <script src="https://cdn.tiny.cloud/1/5g5faf78gvk6yfq9bd3bbfjo858kjx1q8o0nbiwtygo2e4er/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+        <script src="{{ asset('js/tiny.js') }}"></script>
 
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -19,6 +21,9 @@
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/layout.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/reset.css') }}" rel="stylesheet">
 
         @yield('styles')
     </head>
+
+    <body>

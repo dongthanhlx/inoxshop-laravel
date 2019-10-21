@@ -49,9 +49,10 @@ class PageController extends Controller
      */
     public function show($slug)
     {
-        $page = new Page();
-        $content = $page->getContent($slug);
-
+        $pageObject = new Page();
+//        $content = $pageObject->getContent($slug);
+        $pages = $pageObject->getPages(['with_slug', $slug]);
+        $content = $pages->first()->content;
         $this->loadAllDataCategory();
         return $this->render('page', ['content' => $content, 'rootCategories' => $this->rootCategories]);
     }
@@ -76,7 +77,7 @@ class PageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**

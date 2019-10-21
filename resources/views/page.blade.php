@@ -1,5 +1,6 @@
 @extends ("layouts.$layout")
-
 @section('content')
-    {{ $content }}
+    <?=
+        $content
+    ?>
 @endsection

@@ -13,4 +13,9 @@ class Page extends Model
         return $pages->where('with_slug', $slug)->first()->content;
     }
 
+    public function getPages($conditions = [])
+    {
+        $pages = Page::all();
+        return $pages->where($conditions[0], $conditions[1]);
+    }
 }
