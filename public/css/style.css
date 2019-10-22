@@ -1,0 +1,41 @@
+.nav-item a {
+    color: black;
+}
+
+.nav-item:hover a {
+    background-color: #4dc0b5;
+    color: white;
+}
+
+#sidebar h4 {
+    color: #1B9972;
+}
+
+/* NAV */
+#header {
+    margin: auto;
+    background-color: #4dc0b5;
+}
+
+#header .dropdown-bottom .dropdown-menu a:hover {
+    color: black;
+}
+
+.hotline {
+    color: #F51D3E;
+    border-radius: 10px;
+}
+
+.container.two-columns {
+    background-color: white;
+}
+
+/* FOOTER */
+footer {
+    background-color: #4dc0b5;
+}
+
+
+footer a {
+    color: bisque;
+}
