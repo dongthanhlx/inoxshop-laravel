@@ -3,11 +3,19 @@
         <div class="row d-flex">
             <a href="{{ url('/') }}"><img src="{{ url('pictures/icon/main-logo.png') }}" alt="logo" class="icon" height="80px" width="260px"/></a>
 
-            <form action="" class="input-group flex-nowrap col-6 align-self-start" method="post">
-                <input id="search" name="product-name" type="text" class="form-control" placeholder="Tên sản phẩm" aria-label="Tên sản phẩm" />
-                <button class="btn btn-outline-secondary">Search</button>
-            </form>
+            {{--<div class="col-6">
+                <form action="" class="flex-nowrap align-self-start form-group input-group" method="post">
+                    <input type="text" id="search" class="form-control" name="search" placeholder="Tên sản phẩm" />
+                </form>
+                <div id="productList" style="margin-top: -14px;"></div>
+            </div>--}}
 
+            <div class="col-6 form-group">
+                <input type="text" id="search" class="form-control input-lg" placeholder="Tìm kiếm sản phẩm" />
+                <div id="productList"></div>
+            </div>
+
+            {{ csrf_field() }}
             <div class="hotline col align-middle text-center">
                 <h1 class="font-weight-bolder">HOTLINE</h1>
                 <div class="custom-control-inline ml-3">
