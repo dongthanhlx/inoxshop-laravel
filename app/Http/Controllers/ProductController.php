@@ -31,6 +31,12 @@ class ProductController extends Controller
             $categories = DB::table('categories')
                 ->where('name', 'LIKE', "%{$query}%")
                 ->get();
+/*
+            $productObject = new Product();
+            $products = $productObject->get(['name', 'LIKE', "%{$query}%"]);
+
+            $categoryObject = new Category();
+            $categories = $categoryObject->get(['name', 'LIKE', "%{$query}%"]);*/
 
             $output = '<ul class="dropdown-menu" style="display: block; position: relative">';
             foreach ($categories as $category)
@@ -40,11 +46,10 @@ class ProductController extends Controller
                 ";
             }
 
-            $categoryObject = new Category();
             foreach ($products as $product)
             {
                 $category = $categoryObject->getCategoryByID($product->category_id);
-                $slugCategory = $category->first()->slug;
+                $slugCategory = $category->slug;
                 $output .= "
                     <li><a href='../products/$slugCategory#$product->slug' class='dropdown-item'>" . $product->name . "</a></li>
                 ";

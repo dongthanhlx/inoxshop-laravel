@@ -2,26 +2,16 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
-
-class Category extends Model
+class Category extends BaseModel
 {
-    public function getCategories($conditions = [])
+    public function getCategoryByID($id)
     {
-        $category = Category::all();
-
-        return $category->where($conditions[0], $conditions[1]);
-    }
-
-    public function getCategoryByID($category_id)
-    {
-        return $this->getCategories(['id', $category_id]);
+        return $this->get(['id', '=', $id])->first();
     }
 
     public function getAllParent()
     {
-        return $this->getCategories(['parent_id', 0]);
+        return $this->get(['parent_id', '=', 0]);
     }
 
     public function getParent($category_id)
@@ -31,9 +21,9 @@ class Category extends Model
         return $this->getCategoryByID($category->parent_id);
     }
 
-    public function getChilds($category_id)
+    public function getChilds($parent_id)
     {
-        return $this->getCategories(['parent_id', $category_id]);
+        return $this->get(['parent_id', '=', $parent_id]);
     }
 }
 

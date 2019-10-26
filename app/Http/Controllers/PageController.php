@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
 use App\Page;
-use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -50,10 +48,8 @@ class PageController extends Controller
     public function show($slug)
     {
         $pageObject = new Page();
-//        $content = $pageObject->getContent($slug);
-        $pages = $pageObject->getPages(['with_slug', $slug]);
-        $content = $pages->first()->content;
-        $this->loadAllDataCategory();
+        $content = $pageObject->getContentBySlug($slug);
+        $this->loadAllCategoryData();
         return $this->render('page', ['content' => $content, 'rootCategories' => $this->rootCategories]);
     }
 

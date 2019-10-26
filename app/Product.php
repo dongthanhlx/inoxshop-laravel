@@ -2,15 +2,12 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Product extends Model
+class Product extends BaseModel
 {
-    public function getProducts($conditions = [])
-    {
-        $products = Product::all();
 
-        return $products->where($conditions[0], $conditions[1]);
+    public function getProductsByCategoryID($category_id)
+    {
+        return $this->get(['category_id', '=', $category_id]);
     }
 
 }

@@ -4,28 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Product;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
-
     protected $rootCategories = null;
-
-    public function loadAllDataCategory()
+    public function loadAllCategoryData()
     {
         $categoryObject = new Category();
         $this->rootCategories = $categoryObject->getAllParent();
-
         foreach ($this->rootCategories as $rootCategory)
         {
             $rootCategory->categories = $categoryObject->getChilds($rootCategory->id);
+            $productObject = new Product();
             foreach ($rootCategory->categories as $category)
             {
-                $productObject = new Product();
-                $category->products = $productObject->getProducts(['category_id', $category->id]);
+                $category->products = $productObject->getProductsByCategoryID($category->id);
             }
         }
     }
@@ -34,9 +28,7 @@ class Controller extends BaseController
     {
         return view($viewpath)->with(array_merge(
             ['layout' => $layout],
-                $data
+            $data
         ));
-
     }
-
 }

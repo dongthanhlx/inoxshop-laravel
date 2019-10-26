@@ -70,13 +70,10 @@ class MakeDataController extends Controller
     public function edit($slug)
     {
         $pageObject = new Page();
-        $pages = $pageObject->getPages(['with_slug', $slug]);
-        $id = $pages->first()->id;
-        $content = $pages->first()->content;
-        $name = $pages->first()->name;
+        $page = $pageObject->getPageBySlug($slug);
 
-        $this->loadAllDataCategory();
-        return $this->render('EditDataDB', ['name' => $name, 'id' => $id, 'rootCategories' => $this->rootCategories, 'content' => $content]);
+        $this->loadAllCategoryData();
+        return $this->render('EditDataDB', ['page' => $page , 'rootCategories' => $this->rootCategories]);
     }
 
     /**
@@ -98,8 +95,10 @@ class MakeDataController extends Controller
             'content' => $newContent
         ];
 
-        Page::whereId($id)->update($newData);
-        redirect('/');
+        $page = new Page;
+        $page->updateByID($id, $newData);
+
+        redirect()->route('/');
     }
 
     /**

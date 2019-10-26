@@ -2,20 +2,18 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 
-class Page extends Model
+class Page extends BaseModel
 {
-    public function getContent($slug)
-    {
-        $pages = Page::all();
 
-        return $pages->where('with_slug', $slug)->first()->content;
+    public function getContentBySlug($slug)
+    {
+        return $this->get(['with_slug', '=', $slug])->first()->content;
     }
 
-    public function getPages($conditions = [])
+    public function getPageBySlug($slug)
     {
-        $pages = Page::all();
-        return $pages->where($conditions[0], $conditions[1]);
+        return $this->get(['with_slug', '=', $slug])->first();
     }
+
 }

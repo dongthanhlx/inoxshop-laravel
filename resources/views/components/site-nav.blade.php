@@ -3,25 +3,20 @@
         <div class="row d-flex">
             <a href="{{ url('/') }}"><img src="{{ url('pictures/icon/main-logo.png') }}" alt="logo" class="icon" height="80px" width="260px"/></a>
 
-            {{--<div class="col-6">
-                <form action="" class="flex-nowrap align-self-start form-group input-group" method="post">
-                    <input type="text" id="search" class="form-control" name="search" placeholder="Tên sản phẩm" />
-                </form>
-                <div id="productList" style="margin-top: -14px;"></div>
-            </div>--}}
-
             <div class="col-6 form-group">
+                {{ csrf_field() }}
                 <input type="text" id="search" class="form-control input-lg" placeholder="Tìm kiếm sản phẩm" />
                 <div id="productList"></div>
             </div>
 
-            {{ csrf_field() }}
             <div class="hotline col align-middle text-center">
                 <h1 class="font-weight-bolder">HOTLINE</h1>
+
                 <div class="custom-control-inline ml-3">
                     <label><img src="{{ url('pictures/icon/mayban.png') }}" alt="mayban" width="30px" height="30px"></label>
                         <pre class="font-italic"><h5 id="phone" > 02113 839 186</h5></pre>
                 </div>
+
                 <div class="custom-control-inline">
                     <label><img src="{{ url('pictures/icon/didong.jpg') }}" alt="didong" width="40px" height="40px"></label>
                         <pre><h5> 0979 552 609</h5><h5> 09 1234 0708</h5></pre>
@@ -34,7 +29,7 @@
                 <a href="{{ url('/') }}" class="nav-link">Trang chủ</a>
             </li>
 
-            @foreach ($rootCategories as $rootCategory)
+        @foreach ($rootCategories as $rootCategory)
             <li class="nav-item dropdown dropdown-bottom border border-secondary rounded">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                     {{ $rootCategory->name }}
@@ -43,17 +38,10 @@
                 <div class="dropdown-menu">
                 @foreach ($rootCategory->categories as $category)
                     <a href="{{ url('products/' . $category->slug) }}" class="dropdown-item">{{ $category->name }}</a>
-                    {{--@if (count($category->products) > 0)
-                        <div class="dropdown-menu sub-item" style="display: none">
-                            @foreach ($category->products as $product)
-                                <a href="../products/{{ $category->slug }}#{{ $product->slug }}" class="dropdown-item">{{ $product->name }}</a>
-                            @endforeach
-                        </div>
-                    @endif--}}
                 @endforeach
                 </div>
             </li>
-            @endforeach
+        @endforeach
 
             <li class="nav-item border border-secondary rounded">
                 <a href="{{ url('pages/san-pham-ban-chay') }}" class="nav-link">Sản phẩm bán chạy</a>
@@ -63,6 +51,7 @@
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                     Hỗ trợ khách hàng
                 </a>
+
                 <div class="dropdown-menu">
                     <a href="{{ url('pages/hinh-thuc-mua-hang') }}" class="dropdown-item">Hình thức mua hàng</a>
                     <a href="{{ url('pages/chinh-sach-bao-hanh') }}" class="dropdown-item">Chính sách bảo hành</a>
