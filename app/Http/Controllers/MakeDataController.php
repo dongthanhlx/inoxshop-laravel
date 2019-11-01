@@ -98,7 +98,7 @@ class MakeDataController extends Controller
         $page = new Page;
         $page->updateByID($id, $newData);
 
-        redirect()->route('/');
+        redirect('home');
     }
 
     /**

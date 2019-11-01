@@ -1,10 +1,13 @@
+html {
+    font-size: 14px;
+}
+
 .nav-item a {
     color: black;
 }
 
 .nav-item:hover a {
-    background-color: #4dc0b5;
-    color: white;
+    background-color: #fff;
 }
 
 #sidebar h4 {
@@ -14,7 +17,11 @@
 /* NAV */
 #header {
     margin: auto;
-    background-color: #4dc0b5;
+    background-color: #ffa801;
+}
+
+#header .logo {
+    width: 100%;
 }
 
 #header .dropdown-bottom .dropdown-menu a:hover {
@@ -22,17 +29,29 @@
 }
 
 .hotline {
-    color: #F51D3E;
-    border-radius: 10px;
+    color: #fff;
+}
+
+.phone-no {
+    color: #505050;
+    font-weight: 600;
+}
+
+.phone-no:hover {
+    text-decoration: none;
 }
 
 .container.two-columns {
     background-color: white;
 }
 
+.menu-wrapper {
+    background: #ffc048;
+}
+
 /* FOOTER */
 footer {
-    background-color: #4dc0b5;
+    background-color: #ffa801;
 }
 
 

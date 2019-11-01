@@ -1,3 +1,4 @@
+{{--
 <div id="sidebar" class="list-group">
 @foreach ($rootCategories as $rootCategory)
     <section class="border rounded">
@@ -23,3 +24,4 @@
     </section>
 @endforeach
 </div>
+--}}

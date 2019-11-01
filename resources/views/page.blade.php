@@ -1,6 +1,6 @@
 @extends ("layouts.$layout")
 @section('content')
-    <?=
-        $content
-    ?>
+    <div class="content-present">
+        <?=$content?>
+    </div>
 @endsection

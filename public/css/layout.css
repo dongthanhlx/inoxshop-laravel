@@ -1,7 +1,7 @@
 
-.nav-item a {
-    font-size: 18px;
-    font-weight: bold;
+.nav-item > a {
+    font-size: 1rem;
+    font-weight: 600;
 }
 
 a {
@@ -74,8 +74,6 @@ li.dropdown-right:hover .dropdown-menu {
 }
 
 .container #primary {
-    width: 70%;
-    padding-top: 50px;
     margin: auto;
 }
 

@@ -24,23 +24,18 @@ class ProductController extends Controller
         if ($request->get('query'))
         {
             $query = $request->get('query');
-            $products = DB::table('products')
-                ->where('name', 'LIKE', "%{$query}%")
-                ->get();
 
-            $categories = DB::table('categories')
-                ->where('name', 'LIKE', "%{$query}%")
-                ->get();
-/*
             $productObject = new Product();
             $products = $productObject->get(['name', 'LIKE', "%{$query}%"]);
 
             $categoryObject = new Category();
-            $categories = $categoryObject->get(['name', 'LIKE', "%{$query}%"]);*/
+            $categories = $categoryObject->get(['name', 'LIKE', "%{$query}%"]);
 
             $output = '<ul class="dropdown-menu" style="display: block; position: relative">';
             foreach ($categories as $category)
             {
+                if ($category->parent_id == 0) continue;
+
                 $output .= "
                     <li><a href='../products/$category->slug' class='dropdown-item'>" . $category->name . "</a></li>
                 ";

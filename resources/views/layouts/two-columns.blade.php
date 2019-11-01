@@ -1,8 +1,11 @@
 @include('components.site-header')
-@include('components.site-nav')
+
 @include('components.site-sidebar')
-<?= "<div class='container two-columns'>" ?>
-    @include('components.site-primary')
-<?= "</div>" ?>
-@include('components.site-copyright')
+
+<div class="container two-columns">
+    <div id="primary">
+        @yield('content')
+    </div>
+</div>
+
 @include('components.site-footer')
