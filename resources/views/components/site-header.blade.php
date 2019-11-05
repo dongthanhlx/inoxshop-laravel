@@ -18,7 +18,6 @@
 
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -26,7 +25,6 @@
         <link href="{{ asset('css/reset.css') }}" rel="stylesheet">
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">
         <link href="{{ asset('css/post.css') }}" rel="stylesheet">
-
         <script src="https://kit.fontawesome.com/2f67e8621f.js" crossorigin="anonymous"></script>
 
         @yield('styles')
@@ -44,7 +42,7 @@
                     </div>
 
                     <div class="col-6">
-                        <form action="" class="mt-5 pl-5">
+                        <form action="" class="mt-5">
                             {{ csrf_field() }}
                             <input type="text" id="search" class="form-control input-lg"
                                    placeholder="Tìm kiếm sản phẩm"/>
@@ -75,7 +73,7 @@
 
             <div class="menu-wrapper">
                 <div class="container">
-                    <ul class="nav">
+                    <ul class="nav position-relative">
                         <li class="nav-item">
                             <a href="{{ url('/') }}" class="nav-link">Trang chủ</a>
                         </li>
@@ -95,10 +93,12 @@
                                 </div>
                             </li>
                         @endforeach
+{{--
 
                         <li class="nav-item">
                             <a href="{{ url('pages/san-pham-ban-chay') }}" class="nav-link">Sản phẩm bán chạy</a>
                         </li>
+--}}
 
                         <li class="nav-item dropdown dropdown-bottom">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -112,6 +112,9 @@
                                 <a href="{{ url('pages/chinh-sach-thanh-toan') }}" class="dropdown-item">Chính sách thanh toán</a>
                                 <a href="{{ url('pages/chinh-sach-san-pham') }}" class="dropdown-item">Chính sách sản phẩm</a>
                             </div>
+                        </li>
+                        <li class="nav-item position-absolute introduce">
+                            <a href="{{ url('pages/gioi-thieu') }}" class="nav-link">Giới thiệu</a>
                         </li>
                     </ul>
                 </div>

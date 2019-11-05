@@ -68,6 +68,11 @@ li.dropdown-right:hover .dropdown-menu {
 .dropdown-menu {
     margin-top: -1px;
 }
+
+ul.nav li.introduce {
+    right: 0;
+}
+
 /* PRIMARY */
 .container {
     width: 60%;
@@ -100,3 +105,4 @@ footer address {
         display: none;
     }
 }
+

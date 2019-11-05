@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Page;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Str;
 
 class PageController extends Controller
 {
@@ -15,7 +16,8 @@ class PageController extends Controller
      */
     public function index()
     {
-        //
+        $this->loadAllCategoryData();
+        return $this->render('home', ['rootCategories' => $this->rootCategories], 'two-columns');
     }
 
     /**
@@ -25,7 +27,7 @@ class PageController extends Controller
      */
     public function create()
     {
-        //
+        return $this->render('make-data', ['rootCategories' => $this->rootCategories]);
     }
 
     /**
@@ -36,7 +38,17 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $name = $request->input('name');
+        $content = $request->input('content');
+        $slug = Str::slug($name, '-');
+
+        $page = new Page;
+        $page->name = $name;
+        $page->with_slug = $slug;
+        $page->content = $content;
+
+        $page->save();
+        return redirect('/');
     }
 
     /**
@@ -59,9 +71,13 @@ class PageController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        //
+        $pageObject = new Page();
+        $page = $pageObject->getPageBySlug($slug);
+
+        $this->loadAllCategoryData();
+        return $this->render('edit-data', ['page' => $page , 'rootCategories' => $this->rootCategories]);
     }
 
     /**
@@ -73,18 +89,20 @@ class PageController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $newName = $request->input('newName');
+        $newSlug = Str::slug($newName);
+        $newContent = $request->input('newContent');
 
-    }
+        $newData = [
+            'name' => $newName,
+            'with_slug' => $newSlug,
+            'content' => $newContent
+        ];
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
+        $page = new Page;
+        $page->updateByID($id, $newData);
+
+        redirect('home');
     }
 
 }
